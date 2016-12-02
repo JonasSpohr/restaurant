@@ -1,0 +1,65 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Recepcionistas</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#/home">Home</a>
+            </li>
+            <li class="active">
+                <strong>Recepcionistas</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Recepcionistas cadastrados</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-sm btn-success pull-right" ng-show="isAdmin" ng-click="new()">Cadastrar</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th class="hidden-xs">Email</th>
+                                        <th class="hidden-xs">Telefone</th>
+                                        <th>Celular</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="i in items">
+                                        <td>{{i.name}}</td>
+                                        <td class="hidden-xs">{{i.email}}</td>
+                                        <td class="hidden-xs">{{i.phone}}</td>
+                                        <td >{{i.mobile}}</td>
+                                        <td style="text-align: center">
+                                            <button class="btn btn-xs btn-success" ng-show="isAdmin" ng-disabled="isProcessing" ng-click="edit(i._id)">Editar</button>
+                                            <button class="btn btn-xs btn-success" ng-show="!isAdmin" ng-disabled="isProcessing" ng-click="edit(i._id)">Visualizar</button>
+                                            <button class="btn btn-xs btn-danger" ng-show="isAdmin" ng-click="delete(i._id)">Excluir</button>
+                                        </td>
+                                    </tr>
+                                    <tr ng-show="items.length == 0 && !isLoading">
+                                        <td colspan="5">Sem resultados</td>
+                                    </tr>
+                                    <tr ng-show="isLoading">
+                                        <td colspan="5">Consultando...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

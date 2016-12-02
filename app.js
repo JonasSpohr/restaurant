@@ -7,7 +7,9 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var todos = require('./routes/todos');
+var login = require('./routes/login');
+var signup = require('./routes/signup');
+var recepcionists = require('./routes/recepcionists');
 
 // load mongoose package
 var mongoose = require('mongoose');
@@ -16,7 +18,9 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 // connect to MongoDB
-mongoose.connect('mongodb://localhost/todo-api')
+//PWD: Spohr1010
+//user: root
+mongoose.connect('mongodb://'+process.env.USER+':'+process.env.PWD+'@ds159737.mlab.com:59737/events')
   .then(() =>  console.log('connection succesful'))
   .catch((err) => console.error(err));
 
@@ -36,7 +40,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/todos', todos);
+app.use('/login', login);
+app.use('/signup', signup);
+app.use('/recepcionists', recepcionists);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

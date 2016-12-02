@@ -1,0 +1,78 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Funcionário</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#/home">Home</a>
+            </li>
+            <li>
+                <a href="#/employees">Funcionários</a>
+            </li>
+            <li class="active">
+                <strong>Funcionário</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Dados do funcionário</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Nome</label>
+                                <input type="text" class="form-control" ng-model="user.name" placeholder="Nome">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" class="form-control" ng-model="user.email" placeholder="Email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Telefone</label>
+                                <input type="text" class="form-control" ng-model="user.phone" placeholder="Telefone" mask='(99) 99999-9999'>
+                            </div>
+                        </div>
+                        <div class="col-md-6" ng-show="isAdmin">
+                            <div class="form-group">
+                                <label>Tipo</label>
+                                <select class="form-control" ng-model="user.type">
+                                    <option></option>
+                                    <option value="admin">Administrador</option>
+                                    <option value="comum">Comum</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" ng-show="isAdmin">
+                        <div class="col-md-6">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="user.active" > Ativo
+                                </label>
+                            </div>
+                        </div>                        
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="#/employees" class="btn btn-sm btn-default pull-right" style="margin-left: 10px">Voltar</a>
+                            <button class="btn btn-sm btn-danger pull-right" ng-disabled="Me" ng-show="user._id != undefined && isAdmin" style="margin-left: 10px" ng-click="delete()">Excluir</button>
+                            <button class="btn btn-sm btn-success pull-right" ng-show="Me || isAdmin" ng-click="save()">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

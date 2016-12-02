@@ -1,0 +1,283 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Recepcionista</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#/home">Home</a>
+            </li>
+            <li>
+                <a href="#/recepcionists">Recepcionistas</a>
+            </li>
+            <li class="active">
+                <strong>Recepcionista</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Dados do recepcionista</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Nome</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.name" placeholder="Nome">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Gênero</label>
+                                <select class="form-control" ng-model="recepcionist.gender">
+                                    <option></option>
+                                    <option value="m">Masculino</option>
+                                    <option value="f">Feminino</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Data de nascimento</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.dateOfBirth" placeholder="Data de nascimento" mask='99/99/9999'>
+                            </div>
+                        </div>    
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>CNPJ</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.cnpj" placeholder="CNPJ" mask='99.999.999/9999-99'>
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.email" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Skype</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.skype" placeholder="Skype">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Telefone</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.phone" placeholder="Telefone" mask='(99) 9999-9999'>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Celular</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.mobile" placeholder="Celular" mask='(99) 99999-9999'>
+                            </div>
+                        </div>                        
+                    </div>                    
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Logradouro</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.address.street" placeholder="Logradouro">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Número</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.address.number" placeholder="Número">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Complemento</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.address.complement" placeholder="Complemento">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Cidade</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.address.city" placeholder="Cidade">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Estado</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.address.state" placeholder="Estado">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>CEP</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.address.zipCode" placeholder="CEP" mask="99999-999">
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>CPF</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.cpf" placeholder="CPF" mask="999.999.999-99">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>RG</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.rg" placeholder="RG" mask="9999999999">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Dados bancários</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.bankAccount" placeholder="Dados bancários">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Carteira de trabalho</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.carteiraTrabalho" placeholder="Carteira de trabalho">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>PIS</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.pis" placeholder="PIS">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Nome da mãe</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.motherName" placeholder="Nome da mãe">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Nome do pai</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.fatherName" placeholder="Nome do pai">
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Altura</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.profile.height" placeholder="Altura">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Peso</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.profile.weight" placeholder="Peso">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Manequin</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.profile.manequin" placeholder="Manequin">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Pé</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.profile.shoesSize" placeholder="Pé">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Cabelos</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.profile.hair" placeholder="Cabelos">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Olhos</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.profile.eyes" placeholder="Olhos">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Pele</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.profile.skin" placeholder="Pele">
+                            </div>
+                        </div>
+                        <div class="col-md-3" ng-show="recepcionist.gender == 'f'">
+                            <div class="form-group">
+                                <label>Busto</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.profile.bust" placeholder="Busto">
+                            </div>
+                        </div>
+                        <div class="col-md-3" ng-show="recepcionist.gender == 'f'">
+                            <div class="form-group">
+                                <label>Cintura</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.profile.waist" placeholder="Cintura">
+                            </div>
+                        </div>
+                        <div class="col-md-3" ng-show="recepcionist.gender == 'f'">
+                            <div class="form-group">
+                                <label>Quadril</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.profile.hip" placeholder="Quadril">
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Idiomas</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.profile.languages" placeholder="Idiomas">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Escolaridade</label>
+                                <input type="text" class="form-control" ng-model="recepcionist.profile.school" placeholder="Escolaridade">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Habilidades e estadias</label>
+                                <textarea class="form-control" ng-model="recepcionist.profile.habilities" placeholder="Habilidades e estadias" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Experiências (Evento/Cliente)</label>
+                                <textarea class="form-control" ng-model="recepcionist.profile.experience" placeholder="Experiências (Evento/Cliente)" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="#/recepcionists" class="btn btn-sm btn-default pull-right" style="margin-left: 10px">Voltar</a>
+                            <button class="btn btn-sm btn-danger pull-right" ng-show="recepcionist._id != undefined && isAdmin" style="margin-left: 10px" ng-click="delete()">Excluir</button>
+                            <button class="btn btn-sm btn-success pull-right" ng-show="isAdmin" ng-click="save()">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
