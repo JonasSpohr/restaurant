@@ -20,7 +20,9 @@ mongoose.Promise = global.Promise;
 // connect to MongoDB
 //PWD: Spohr1010
 //user: root
-mongoose.connect('mongodb://'+process.env.USER+':'+process.env.PWD+'@ds159737.mlab.com:59737/events')
+var conn = 'mongodb://'+process.env.USER+':'+process.env.PWD+'@ds159737.mlab.com:59737/events';
+console.log(conn)
+mongoose.connect(conn)
   .then(() =>  console.log('connection succesful'))
   .catch((err) => console.error(err));
 
