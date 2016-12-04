@@ -1,6 +1,6 @@
 {
-  "name": "todo-api",
-  "version": "0.0.0",
+  "name": "eventos-adm-beta",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"

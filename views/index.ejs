@@ -32,8 +32,9 @@
       <script src="/controllers/SignupController.js"></script>
       <script src="/controllers/EmployeesController.js"></script>
       <script src="/controllers/EmployeeController.js"></script> 
-      <script src="/controllers/RecepcionistsController.js"></script>     
+      <script src="/controllers/RecepcionistsController.js"></script>
       <script src="/controllers/RecepcionistController.js"></script>
+      <script src="/controllers/ProvidersController.js"></script>
       <script src="/config.js"></script>
       <!-- Template -->
 
@@ -66,6 +67,11 @@
        <script type="text/ng-template" id="/recepcionist.html">
           <%- include top.ejs %>
           <%- include templates/recepcionist.ejs %>
+          <%- include bottom.ejs %>         
+      </script>
+      <script type="text/ng-template" id="/providers.html">
+          <%- include top.ejs %>
+          <%- include templates/providers.ejs %>
           <%- include bottom.ejs %>         
       </script>
 

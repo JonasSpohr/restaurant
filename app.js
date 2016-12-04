@@ -10,6 +10,7 @@ var users = require('./routes/users');
 var login = require('./routes/login');
 var signup = require('./routes/signup');
 var recepcionists = require('./routes/recepcionists');
+var providers = require('./routes/providers');
 
 // load mongoose package
 var mongoose = require('mongoose');
@@ -45,6 +46,7 @@ app.use('/users', users);
 app.use('/login', login);
 app.use('/signup', signup);
 app.use('/recepcionists', recepcionists);
+app.use('/providers', providers);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
