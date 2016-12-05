@@ -2,12 +2,12 @@ _myApp
     .factory('ProviderFactory', ['$resource', function ($resource) {
         return $resource('/providers/:id', null, {
             'update': { method: 'PUT' },
-            'find': { method: 'GET', url: '/Providers/byId/:id' }
+            'find': { method: 'GET', url: '/providers/byId/:id' }
         });
     }])
     .controller('ProviderCtrl', ['$scope', '$routeParams', '$location', '$localStorage', 'ProviderFactory',
         function ($scope, $routeParams, $location, $localStorage, ProviderFactory) {
-            $scope.Provider = { profile: {}, address: {} };
+            $scope.Provider = { address: {} };
 
             $scope.isAdmin = $localStorage.user.type == 'admin';
 
@@ -31,28 +31,20 @@ _myApp
                     alert('A razão social deve ser informada');
                     return;
                 }
-                if (!$scope.Provider.phone || $scope.Provider.phone == '') {
-                    alert('O telefone deve ser informado');
+                if (!$scope.Provider.cnpj || $scope.Provider.cnpj == '') {
+                    alert('O CNPJ deve ser informado');
                     return;
                 }
                 if (!$scope.Provider.cnpj || $scope.Provider.cnpj == '') {
-                    alert('O cnpj deve ser informado');
+                    alert('O CNPJ deve ser informado');
                     return;
                 }
-                if (!$scope.Provider.gender || $scope.Provider.dateOfBirth == '') {
-                    alert('A data de nascimento deve ser informada');
+                if (!$scope.Provider.phone || $scope.Provider.phone == '') {
+                    alert('O telefone comercial deve ser informado');
                     return;
                 }
-                if (!$scope.Provider.email || $scope.Provider.email == '') {
-                    alert('O email deve ser informado');
-                    return;
-                }
-                if (!$scope.Provider.mobile || $scope.Provider.mobile == '') {
-                    alert('O celular deve ser informado');
-                    return;
-                }
-                if (!$scope.Provider.cpf || $scope.Provider.cpf == '') {
-                    alert('cpf deve ser informado');
+                if (!$scope.Provider.descriptionSevice || $scope.Provider.descriptionSevice == '') {
+                    alert('O descrição da prestaçao de serviço deve ser informada');
                     return;
                 }
 
