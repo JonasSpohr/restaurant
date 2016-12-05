@@ -7,6 +7,11 @@ _myApp
     }])
     .controller('ClientCtrl', ['$scope', '$routeParams', '$location', '$localStorage', 'ClientFactory',
         function ($scope, $routeParams, $location, $localStorage, ClientFactory) {
+
+            $scope.newEvent = function() {
+                $location.url('/event?id=0&clientId=' + $routeParams.id);
+            }
+
             $scope.Client = { address: {} };
 
             $scope.isAdmin = $localStorage.user.type == 'admin';

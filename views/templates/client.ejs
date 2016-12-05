@@ -19,118 +19,168 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Dados do cliente</h5>
+                    <h5>Informações do cliente</h5>
                 </div>
                 <div class="ibox-content">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Empresa</label>
-                                <input type="text" class="form-control" ng-model="Client.companyName" placeholder="Empresa">
+                    <tabset>
+                        <tab heading="Dados básicos">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Empresa</label>
+                                            <input type="text" class="form-control" ng-model="Client.companyName" placeholder="Empresa">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Nome</label>
+                                            <input type="text" class="form-control" ng-model="Client.name" placeholder="Nome">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input type="text" class="form-control" ng-model="Client.email" placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Telefone comercial</label>
+                                            <input type="text" class="form-control" ng-model="Client.phone" placeholder="Telefone" mask="(99) 9999-9999">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>CNPJ</label>
+                                            <input type="text" class="form-control" ng-model="Client.cnpj" placeholder="CNPJ" mask="99.999.999/9999-99">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Contato 1</label>
+                                            <textarea rows="3" class="form-control" ng-model="Client.contact1" placeholder="Contato 1"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Contato 2</label>
+                                            <textarea rows="3" class="form-control" ng-model="Client.contact2" placeholder="Contato 2"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Logradouro</label>
+                                            <input type="text" class="form-control" ng-model="Client.address.street" placeholder="Logradouro">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Número</label>
+                                            <input type="text" class="form-control" ng-model="Client.address.number" placeholder="Número">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Complemento</label>
+                                            <input type="text" class="form-control" ng-model="Client.address.complement" placeholder="Complemento">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Cidade</label>
+                                            <input type="text" class="form-control" ng-model="Client.address.city" placeholder="Cidade">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Estado</label>
+                                            <input type="text" class="form-control" ng-model="Client.address.state" placeholder="Estado">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>CEP</label>
+                                            <input type="text" class="form-control" ng-model="Client.address.zipCode" placeholder="CEP" mask="99999-999">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>País</label>
+                                            <input type="text" class="form-control" ng-model="Client.address.country" placeholder="País">
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <a href="#/clients" class="btn btn-sm btn-default pull-right" style="margin-left: 10px">Voltar</a>
+                                        <button class="btn btn-sm btn-danger pull-right" ng-show="Client._id != undefined && isAdmin" style="margin-left: 10px" ng-click="delete()">Excluir</button>
+                                        <button class="btn btn-sm btn-success pull-right" ng-show="isAdmin" ng-click="save()">Salvar</button>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Nome</label>
-                                <input type="text" class="form-control" ng-model="Client.name" placeholder="Nome">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input type="text" class="form-control" ng-model="Client.email" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Telefone comercial</label>
-                                <input type="text" class="form-control" ng-model="Client.phone" placeholder="Telefone" mask="(99) 9999-9999">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>CNPJ</label>
-                                <input type="text" class="form-control" ng-model="Client.cnpj" placeholder="CNPJ" mask="99.999.999/9999-99">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Contato 1</label>
-                                <textarea rows="3" class="form-control" ng-model="Client.contact1" placeholder="Contato 1"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Contato 2</label>
-                                <textarea rows="3" class="form-control" ng-model="Client.contact2" placeholder="Contato 2"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Logradouro</label>
-                                <input type="text" class="form-control" ng-model="Client.address.street" placeholder="Logradouro">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>Número</label>
-                                <input type="text" class="form-control" ng-model="Client.address.number" placeholder="Número">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>Complemento</label>
-                                <input type="text" class="form-control" ng-model="Client.address.complement" placeholder="Complemento">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Cidade</label>
-                                <input type="text" class="form-control" ng-model="Client.address.city" placeholder="Cidade">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>Estado</label>
-                                <input type="text" class="form-control" ng-model="Client.address.state" placeholder="Estado">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>CEP</label>
-                                <input type="text" class="form-control" ng-model="Client.address.zipCode" placeholder="CEP" mask="99999-999">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>País</label>
-                                <input type="text" class="form-control" ng-model="Client.address.country" placeholder="País">
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <a href="#/clients" class="btn btn-sm btn-default pull-right" style="margin-left: 10px">Voltar</a>
-                            <button class="btn btn-sm btn-danger pull-right" ng-show="Client._id != undefined && isAdmin" style="margin-left: 10px" ng-click="delete()">Excluir</button>
-                            <button class="btn btn-sm btn-success pull-right" ng-show="isAdmin" ng-click="save()">Salvar</button>
-                        </div>
+                        </tab>
+                        <tab heading="Eventos">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button class="btn btn-sm btn-success pull-right" ng-show="isAdmin" ng-click="newEvent()">Cadastrar</button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Titulo</th>
+                                                    <th class="hidden-xs">Data inicio</th>
+                                                    <th class="hidden-xs">Data fim</th>
+                                                    <th>Responsável</th>
+                                                    <th>Cel. responsável</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="i in Client.events">
+                                                    <td>{{i.title}}</td>
+                                                    <td class="hidden-xs">{{i.begin}}</td>
+                                                    <td class="hidden-xs">{{i.end}}</td>
+                                                    <td>{{i.owner}}</td>
+                                                    <td>{{i.ownerMobile}}</td>
+                                                    <td style="text-align: center">
+                                                        <button class="btn btn-xs btn-success" ng-show="isAdmin" ng-disabled="isProcessing" ng-click="edit(i._id)">Editar</button>
+                                                        <button class="btn btn-xs btn-success" ng-show="!isAdmin" ng-disabled="isProcessing" ng-click="edit(i._id)">Visualizar</button>
+                                                        <button class="btn btn-xs btn-danger" ng-show="isAdmin" ng-click="delete(i._id)">Excluir</button>
+                                                    </td>
+                                                </tr>
+                                                <tr ng-show="Client.events.length == 0 && !isLoading">
+                                                    <td colspan="6">Sem resultados</td>
+                                                </tr>
+                                                <tr ng-show="isLoading">
+                                                    <td colspan="6">Consultando...</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                        </tab>
+                    </tabset>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
