@@ -40,9 +40,9 @@
                                 <label>Tipo de evento</label>
                                 <select class="form-control" ng-model="ClientEvent.event.type">
                                     <option></option>
-                                    <option value="acao">Ação</option>
-                                    <option value="convencao">Convenção</option>
-                                    <option value="corporativo">Corporativo</option>
+                                    <option value="Ação">Ação</option>
+                                    <option value="Convenção">Convenção</option>
+                                    <option value="Corporativo">Corporativo</option>
                                     <option value="Feira">Corporativo</option>
                                 </select>
                             </div>
@@ -69,19 +69,21 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label>Qtd. de pessoas</label>
                                 <input type="text" class="form-control" ng-model="ClientEvent.event.people" placeholder="Qtd. de pessoas">
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label>Início</label>
                                 <input type="text" class="form-control" ng-model="ClientEvent.event.timeBegin" placeholder="Início" mask="99:99">
                             </div>
-                        </div>
-                        <div class="col-md-4">
+                        </div>                        
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label>Fim</label>
                                 <input type="text" class="form-control" ng-model="ClientEvent.event.timeEnd" placeholder="Fim" mask="99:99">

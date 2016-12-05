@@ -8,8 +8,37 @@ _myApp
     .controller('ClientCtrl', ['$scope', '$routeParams', '$location', '$localStorage', 'ClientFactory',
         function ($scope, $routeParams, $location, $localStorage, ClientFactory) {
 
-            $scope.newEvent = function() {
+            $scope.newEvent = function () {
                 $location.url('/event?id=0&clientId=' + $routeParams.id);
+            }
+
+            $scope.editEvent = function (id) {
+                $location.url('/event?id=' + id + '&clientId=' + $routeParams.id);
+            }
+
+            $scope.deleteEvent = function (id) {
+                if (confirm('Você confirma a exclusão?')) {
+                    var _client = ClientFactory.find({
+                        id: $routeParams.id
+                    }, function () {
+                        for (i = 0; i < _client.result.events.length; i++) {
+                            if (_client.result.events[i]._id == id) {
+                                _client.result.events.splice(i, 1);
+                                break;
+                            }
+                        }
+
+                        ClientFactory.update({ id: $routeParams.id }, _client.result, function () {
+                            alert('Operação efetuada com sucesso.');
+                            for (i = 0; i < $scope.Client.events.length; i++) {
+                                if ($scope.Client.events[i]._id == id) {
+                                    $scope.Client.events.splice(i, 1);
+                                    break;
+                                }
+                            }
+                        });
+                    });
+                }
             }
 
             $scope.Client = { address: {} };
@@ -35,7 +64,7 @@ _myApp
                 if (!$scope.Client.companyName || $scope.Client.companyName == '') {
                     alert('A empresa deve ser informada');
                     return;
-                }                
+                }
                 if (!$scope.Client.name || $scope.Client.name == '') {
                     alert('O nome deve ser informado');
                     return;

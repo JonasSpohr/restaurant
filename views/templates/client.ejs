@@ -146,32 +146,30 @@
                                         <table class="table table-bordered table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>Titulo</th>
-                                                    <th class="hidden-xs">Data inicio</th>
-                                                    <th class="hidden-xs">Data fim</th>
-                                                    <th>Responsável</th>
-                                                    <th>Cel. responsável</th>
+                                                    <th>Evento</th>
+                                                    <th>Tipo</th>
+                                                    <th class="hidden-xs">Data</th>
+                                                    <th>Contato</th>
                                                     <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr ng-repeat="i in Client.events">
-                                                    <td>{{i.title}}</td>
-                                                    <td class="hidden-xs">{{i.begin}}</td>
-                                                    <td class="hidden-xs">{{i.end}}</td>
-                                                    <td>{{i.owner}}</td>
-                                                    <td>{{i.ownerMobile}}</td>
+                                                    <td>{{i.event.title}}</td>
+                                                    <td>{{i.event.type}}</td>
+                                                    <td class="hidden-xs">{{i.event.date}}</td>
+                                                    <td>{{i.contactName}}</td>
                                                     <td style="text-align: center">
-                                                        <button class="btn btn-xs btn-success" ng-show="isAdmin" ng-disabled="isProcessing" ng-click="edit(i._id)">Editar</button>
-                                                        <button class="btn btn-xs btn-success" ng-show="!isAdmin" ng-disabled="isProcessing" ng-click="edit(i._id)">Visualizar</button>
-                                                        <button class="btn btn-xs btn-danger" ng-show="isAdmin" ng-click="delete(i._id)">Excluir</button>
+                                                        <button class="btn btn-xs btn-success" ng-show="isAdmin" ng-disabled="isProcessing" ng-click="editEvent(i._id)">Editar</button>
+                                                        <button class="btn btn-xs btn-success" ng-show="!isAdmin" ng-disabled="isProcessing" ng-click="editEvent(i._id)">Visualizar</button>
+                                                        <button class="btn btn-xs btn-danger" ng-show="isAdmin" ng-click="deleteEvent(i._id)">Excluir</button>
                                                     </td>
                                                 </tr>
                                                 <tr ng-show="Client.events.length == 0 && !isLoading">
-                                                    <td colspan="6">Sem resultados</td>
+                                                    <td colspan="5">Sem resultados</td>
                                                 </tr>
                                                 <tr ng-show="isLoading">
-                                                    <td colspan="6">Consultando...</td>
+                                                    <td colspan="5">Consultando...</td>
                                                 </tr>
                                             </tbody>
                                         </table>

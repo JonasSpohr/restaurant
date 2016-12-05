@@ -1,64 +1,114 @@
 _myApp
     .factory('EventFactory', ['$resource', function ($resource) {
-        return $resource('/Events/:id', null, {
+        return $resource('/clients/:id', null, {
             'update': { method: 'PUT' },
-            'find': { method: 'GET', url: '/Events/byId/:id' }
+            'find': { method: 'GET', url: '/clients/byId/:id' }
         });
     }])
     .controller('EventCtrl', ['$scope', '$routeParams', '$location', '$localStorage', 'EventFactory',
         function ($scope, $routeParams, $location, $localStorage, EventFactory) {
 
             $scope.ClientId = $routeParams.clientId;
-            $scope.Event = { address: {} };
+            $scope.ClientEvent = { };
 
             $scope.isAdmin = $localStorage.user.type == 'admin';
 
             $scope.delete = function () {
                 if (confirm('Você confirma a exclusão?')) {
-                    var Event = EventFactory.delete({
-                        id: $routeParams.id
+                    var _client = EventFactory.find({
+                        id: $routeParams.clientId
                     }, function () {
-                        if (Event.error) {
-                            alert('Não foi possível excluir os dados do funcionário.');
-                        } else {
-                            alert('Operação efetuada com sucesso.');
-                            $location.url('/Events');
+                        for (i = 0; i < _client.result.events.length; i++) {
+                            if (_client.result.events[i]._id == $routeParams.id) {
+                                _client.result.events.splice(i, 1);
+                                break;
+                            }
                         }
+
+                        EventFactory.update({ id: $routeParams.clientId }, _client.result, function () {
+                            alert('Operação efetuada com sucesso.');
+                            $location.url('/client?id=' + $routeParams.clientId);
+                        });
                     });
                 }
             }
 
             $scope.save = function () {
-                if (!$scope.Event.companyName || $scope.Event.companyName == '') {
-                    alert('A empresa deve ser informada');
+                if (!$scope.ClientEvent.contactName || $scope.ClientEvent.contactName == '') {
+                    alert('O nome do contato deve ser informado');
                     return;
-                }                
+                }
+                if(!$scope.ClientEvent.event){
+                    alert('Os dados do evento devem ser informados.');
+                    return;
+                }
+                if (!$scope.ClientEvent.event.type || $scope.ClientEvent.event.type == '') {
+                    alert('O tipo do evento deve ser informado');
+                    return;
+                }
+                if (!$scope.ClientEvent.event.title || $scope.ClientEvent.event.title == '') {
+                    alert('O evento deve ser informado');
+                    return;
+                }
+                if (!$scope.ClientEvent.event.place || $scope.ClientEvent.event.place == '') {
+                    alert('O local deve ser informado');
+                    return;
+                }
+                if (!$scope.ClientEvent.event.date || $scope.ClientEvent.event.date == '') {
+                    alert('A data deve ser informada');
+                    return;
+                }
 
-                $scope.Event.companyId = $localStorage.user.companyId;
+                //$scope.ClientEvent.companyId = $localStorage.user.companyId;
                 if ($routeParams.id == 0) {
-                    var Event = new EventFactory($scope.Event);
-
-                    Event.$save(function (err) {
-                        alert('Operação efetuada com sucesso.');
-                        $location.url('/Event?id=' + Event.result._id);
+                    var _client = EventFactory.find({
+                        id: $routeParams.clientId
+                    }, function () {
+                        _client.result.events.push($scope.ClientEvent);
+                        EventFactory.update({ id: $routeParams.clientId }, _client.result, function (data) {
+                            if(!data.result){
+                                alert('Não foi possível salvar os dados. Erro:' + JSON.stringify(data));
+                            }else{
+                                alert('Operação efetuada com sucesso.');
+                                $location.url('/client?id=' + $routeParams.clientId);
+                            }
+                        });
                     });
+
                 } else {
-                    EventFactory.update({ id: $routeParams.id }, $scope.Event, function () {
-                        alert('Operação efetuada com sucesso.');
+                    var _client = EventFactory.find({
+                        id: $routeParams.clientId
+                    }, function () {
+                        for (i = 0; i < _client.result.events.length; i++) {
+                            if (_client.result.events[i]._id == $routeParams.id) {
+                                _client.result.events[i] = $scope.ClientEvent;
+                                break;
+                            }
+                        }
+
+                        EventFactory.update({ id: $routeParams.clientId }, _client.result, function (data) {
+                            if(!data.result){
+                                alert('Não foi possível salvar os dados. Erro:' + JSON.stringify(data));
+                            }else{
+                                alert('Operação efetuada com sucesso.');
+                            }
+                        });
                     });
                 }
             }
 
             if ($routeParams.id != 0) {
                 angular.element(document).ready(function () {
-                    var Event = EventFactory.find({
-                        id: $routeParams.id
+                    var _client = EventFactory.find({
+                        id: $routeParams.clientId
                     }, function () {
-                        if (Event.error) {
-                            alert('Não foi possível consultar os dados do fornecedor.');
-                        } else {
-                            $scope.Event = Event.result;
+                        for (i = 0; i < _client.result.events.length; i++) {
+                            if (_client.result.events[i]._id == $routeParams.id) {
+                                $scope.ClientEvent = _client.result.events[i];
+                                break;
+                            }
                         }
+
                     });
                 });
             }
