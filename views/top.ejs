@@ -22,17 +22,17 @@
                ADM
             </div>
          </li>
-         <li class="active">
+         <li class="{{cssCad}}">
             <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Cadastros</span> <span class="fa arrow"></span></a>
             <ul class="nav nav-second-level collapse in">
-               <li><a href="#/employees">Funcionários</a></li>
-               <li><a href="#/recepcionists">Recepcionistas</a></li>
-               <li><a href="#/providers">Fornecedores</a></li>
-               <li><a href="#/clients">Clientes</a></li>
+               <li class="{{cssFunc}}"><a href="#/employees" ng-click="addActive('func')">Funcionários</a></li>
+               <li class="{{cssRecep}}"><a href="#/recepcionists" ng-click="addActive('recep')">Recepcionistas</a></li>
+               <li class="{{cssForn}}"><a href="#/providers" ng-click="addActive('forn')">Fornecedores</a></li>
+               <li class="{{cssCli}}"><a href="#/clients" ng-click="addActive('cli')">Clientes</a></li>
             </ul>
          </li>         
-         <li>
-            <a href="#/agenda"><i class="fa fa-calendar"></i> <span class="nav-label">Agenda</span></a>
+         <li class="{{cssAgen}}">
+            <a href="#/agenda" ng-click="addActive('agen')"><i class="fa fa-calendar"></i> <span class="nav-label">Agenda</span></a>
          </li>  
       </ul>
    </div>
