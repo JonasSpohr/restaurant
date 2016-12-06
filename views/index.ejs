@@ -62,6 +62,7 @@
     <script src="/controllers/ClientController.js"></script>
     <script src="/controllers/EventController.js"></script>
     <script src="/controllers/AgendaController.js"></script>
+    <script src="/controllers/ChangePwdController.js"></script>
     <script src="/config.js"></script>
     <!-- Template -->
 
@@ -124,6 +125,11 @@
     <script type="text/ng-template" id="/agenda.html">
           <%- include top.ejs %>
           <%- include templates/agenda.ejs %>
+          <%- include bottom.ejs %>         
+    </script>
+    <script type="text/ng-template" id="/changepwd.html">
+          <%- include top.ejs %>
+          <%- include templates/changepwd.ejs %>
           <%- include bottom.ejs %>         
     </script>
 
