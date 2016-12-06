@@ -9,22 +9,40 @@
     <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
     <link href="/stylesheets/font/css/font-awesome.css" rel="stylesheet">
     <link href="/stylesheets/animate.css" rel="stylesheet">
+    
+    <link href="/stylesheets/fullcalendar.min.css" rel="stylesheet">
+
     <link href="/stylesheets/style.css" rel="stylesheet">
-</head>
 
-<body ng-controller="BodyCtrl" class="{{cssAdd}}">
-    <div id="wrapper">
-        <ng-view></ng-view>
-    </div>
-
+    <script src="/js/jquery-2.1.1.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="js/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/pace/pace.min.js"></script>
     <!-- Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-resource.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngMask/3.1.1/ngMask.min.js"></script>
-    <script src="js/md5.js"></script>
+
+    <script src="js/md5.js"></script>        
+    <script src="js/moment.js"></script>
+    <script src="js/pt-br.js"></script>
+    
+    <script src="js/fullcalendar.min.js"></script>
+    
     <script src="js/ui-bootstrap-tpls-0.12.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/calendar.js"></script>
+</head>
+
+<body ng-controller="BodyCtrl" class="{{cssAdd}}">
+    <div id="wrapper">
+        <ng-view></ng-view>
+    </div>    
 
     <script src="/app.js"></script>
     <script src="/controllers/BodyController.js"></script>
@@ -42,6 +60,7 @@
     <script src="/controllers/ClientsController.js"></script>
     <script src="/controllers/ClientController.js"></script>
     <script src="/controllers/EventController.js"></script>
+    <script src="/controllers/AgendaController.js"></script>
     <script src="/config.js"></script>
     <!-- Template -->
 
@@ -101,14 +120,13 @@
           <%- include templates/event.ejs %>
           <%- include bottom.ejs %>         
     </script>
+    <script type="text/ng-template" id="/agenda.html">
+          <%- include top.ejs %>
+          <%- include templates/agenda.ejs %>
+          <%- include bottom.ejs %>         
+    </script>
 
-    <script src="/js/jquery-2.1.1.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="js/metisMenu/jquery.metisMenu.js"></script>
-    <script src="js/slimscroll/jquery.slimscroll.min.js"></script>
-    <!-- Custom and plugin javascript -->
-    <script src="js/inspinia.js"></script>
-    <script src="js/pace/pace.min.js"></script>
+   
     <script>
         function doThisWhenTheHashChanges() {
           var path = $(location).attr('hash');

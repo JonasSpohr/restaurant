@@ -20,8 +20,8 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 // connect to MongoDB
-var PWD = process.env.DBPWD || '';
-var USER =  process.env.USER || '';
+var PWD = process.env.DBPWD || 'Spohr1010';
+var USER =  process.env.USER || 'root';
 
 var conn = 'mongodb://'+ USER +':' + PWD +'@ds159737.mlab.com:59737/events';
 console.log(conn)

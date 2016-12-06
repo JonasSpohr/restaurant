@@ -78,6 +78,13 @@ _myApp.config(['$routeProvider', function ($routeProvider) {
                 return (user != null && user != undefined);
             }
         })
+        .when('/agenda', {
+            templateUrl: '/agenda.html',
+            controller: 'AgendaCtrl',
+            auth: function (user) {
+                return (user != null && user != undefined);
+            }
+        })
         .when('/signup', {
             templateUrl: '/signup.html',
             controller: 'SignupCtrl'
