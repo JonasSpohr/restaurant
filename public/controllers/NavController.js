@@ -10,12 +10,5 @@ _myApp
         }
     }
 
-    $scope.showHideMenu = function(){
-        if($rootScope.addMinicss == 'mini-navbar')
-            $rootScope.addMinicss = '';
-        else
-            $rootScope.addMinicss = 'mini-navbar';
-
-        $rootScope.$apply();   
-    }
+   
 }]);

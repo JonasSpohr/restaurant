@@ -1,7 +1,13 @@
 _myApp
 .controller('BodyCtrl', ['$scope', '$rootScope', '$localStorage','$location', function ($scope, $rootScope, $localStorage, $location) {
-    $scope.cssAdd = $rootScope.addMinicss;
-    
+    $scope.showHideMenu = function(){
+        if(!angular.element( document.querySelector( 'body' ) ).hasClass('mini-navbar')){
+            angular.element( document.querySelector( 'body' ) ).addClass('mini-navbar')
+        }else{
+            angular.element( document.querySelector( 'body' ) ).removeClass('mini-navbar')
+        }
+    }
+
     $scope.addActive = function(item){
         $scope.cssFunc = '';
         $scope.cssRecep = '';
