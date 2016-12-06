@@ -8,6 +8,14 @@ _myApp
     .controller('EventCtrl', ['$scope', '$routeParams', '$location', '$localStorage', 'EventFactory',
         function($scope, $routeParams, $location, $localStorage, EventFactory) {
 
+            $scope.goBack = function(){
+                if($routeParams.back){
+                    $location.url('/agenda');
+                }else{
+                    $location.url('/client?id=' + $routeParams.clientId);
+                }
+            }
+
             $scope.ClientId = $routeParams.clientId;
             $scope.ClientEvent = {};
 

@@ -8,6 +8,14 @@ _myApp
         }
     }
 
+    $scope.showProfile = function(){
+        if(!angular.element( document.querySelector( '.profile-element' ) ).hasClass('open')){
+            angular.element( document.querySelector( '.profile-element' ) ).addClass('open')
+        }else{
+            angular.element( document.querySelector( '.profile-element' ) ).removeClass('open')
+        }
+    }
+
     $scope.addActive = function(item){
         $scope.cssFunc = '';
         $scope.cssRecep = '';

@@ -339,7 +339,7 @@
                     <hr>
                     <div class="row">
                         <div class="col-md-12">
-                            <a href="#/client?id={{ClientId}}" class="btn btn-sm btn-default pull-right" style="margin-left: 10px">Voltar</a>
+                            <a href="javascript:void(0)" ng-click="goBack()" class="btn btn-sm btn-default pull-right" style="margin-left: 10px">Voltar</a>
                             <button class="btn btn-sm btn-danger pull-right" ng-show="Event._id != undefined && isAdmin" style="margin-left: 10px" ng-click="delete()">Excluir</button>
                             <button class="btn btn-sm btn-success pull-right" ng-show="isAdmin" ng-click="save()">Salvar</button>
                         </div>

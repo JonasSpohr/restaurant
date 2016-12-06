@@ -6,19 +6,13 @@ _myApp
     }])
     .controller('AgendaCtrl', ['$scope', '$routeParams', '$location', '$localStorage', 'AgendaFactory', '$route',
         function ($scope, $routeParams, $location, $localStorage, AgendaFactory, $route) {
-
-            var date = new Date();
-            var d = date.getDate();
-            var m = date.getMonth();
-            var y = date.getFullYear();
-
             // Events
             $scope.events = [];
 
             /* message on eventClick */
             $scope.alertOnEventClick = function (event, allDay, jsEvent, view) {
                 $scope.alertMessage = (event.title + ': Clicked ');
-                $location.url('/event?id=' + event.id + '&clientId=' + event.clientId);
+                $location.url('/event?id=' + event.id + '&clientId=' + event.clientId + "&back=agenda");
             };
 
             /* config object */
