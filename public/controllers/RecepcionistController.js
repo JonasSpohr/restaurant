@@ -8,16 +8,19 @@ _myApp
     .controller('RecepcionistCtrl', ['$scope', '$routeParams', '$location', '$localStorage', 'RecepcionistFactory',
         function ($scope, $routeParams, $location, $localStorage, RecepcionistFactory) {
             $scope.recepcionist = { profile: {}, address: {} };
+            $scope.isProcessing = false;
 
             $scope.isAdmin = $localStorage.user.type == 'admin';
 
             $scope.delete = function () {
                 if (confirm('Você confirma a exclusão?')) {
+                    $scope.isProcessing = true;
                     var Recepcionist = RecepcionistFactory.delete({
                         id: $routeParams.id
                     }, function () {
                         if (Recepcionist.error) {
                             alert('Não foi possível excluir os dados do funcionário.');
+                            $scope.isProcessing = false;
                         } else {
                             alert('Operação efetuada com sucesso.');
                             $location.url('/recepcionists');
@@ -52,6 +55,7 @@ _myApp
                     return;
                 }
 
+                $scope.isProcessing = true;
                 $scope.recepcionist.companyId = $localStorage.user.companyId;
                 if ($routeParams.id == 0) {
                     var Recepcionist = new RecepcionistFactory($scope.recepcionist);
@@ -63,6 +67,7 @@ _myApp
                 } else {
                     RecepcionistFactory.update({ id: $routeParams.id }, $scope.recepcionist, function () {
                         alert('Operação efetuada com sucesso.');
+                        $scope.isProcessing = false;
                     });
                 }
             }

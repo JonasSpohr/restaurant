@@ -8,6 +8,7 @@ _myApp
     .controller('ClientCtrl', ['$scope', '$routeParams', '$location', '$localStorage', 'ClientFactory',
         function ($scope, $routeParams, $location, $localStorage, ClientFactory) {
 
+            $scope.isProcessing = false;
             $scope.newEvent = function () {
                 $location.url('/event?id=0&clientId=' + $routeParams.id);
             }
@@ -18,6 +19,7 @@ _myApp
 
             $scope.deleteEvent = function (id) {
                 if (confirm('Você confirma a exclusão?')) {
+                    $scope.isProcessing = true;
                     var _client = ClientFactory.find({
                         id: $routeParams.id
                     }, function () {
@@ -30,6 +32,7 @@ _myApp
 
                         ClientFactory.update({ id: $routeParams.id }, _client.result, function () {
                             alert('Operação efetuada com sucesso.');
+                            $scope.isProcessing = false;
                             for (i = 0; i < $scope.Client.events.length; i++) {
                                 if ($scope.Client.events[i]._id == id) {
                                     $scope.Client.events.splice(i, 1);
@@ -47,14 +50,16 @@ _myApp
 
             $scope.delete = function () {
                 if (confirm('Você confirma a exclusão?')) {
+                    $scope.isProcessing = true;
                     var Client = ClientFactory.delete({
                         id: $routeParams.id
                     }, function () {
                         if (Client.error) {
                             alert('Não foi possível excluir os dados do funcionário.');
+                            $scope.isProcessing = false;
                         } else {
                             alert('Operação efetuada com sucesso.');
-                            $location.url('/Clients');
+                            $location.url('/clients');
                         }
                     });
                 }
@@ -86,6 +91,7 @@ _myApp
                     return;
                 }
 
+                $scope.isProcessing = true;
                 $scope.Client.companyId = $localStorage.user.companyId;
                 if ($routeParams.id == 0) {
                     var Client = new ClientFactory($scope.Client);
@@ -97,6 +103,7 @@ _myApp
                 } else {
                     ClientFactory.update({ id: $routeParams.id }, $scope.Client, function () {
                         alert('Operação efetuada com sucesso.');
+                        $scope.isProcessing = false;
                     });
                 }
             }

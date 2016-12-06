@@ -66,9 +66,9 @@
                     <hr>
                     <div class="row">
                         <div class="col-md-12">
-                            <a href="#/employees" class="btn btn-sm btn-default pull-right" style="margin-left: 10px">Voltar</a>
-                            <button class="btn btn-sm btn-danger pull-right" ng-disabled="Me" ng-show="user._id != undefined && isAdmin" style="margin-left: 10px" ng-click="delete()">Excluir</button>
-                            <button class="btn btn-sm btn-success pull-right" ng-show="Me || isAdmin" ng-click="save()">Salvar</button>
+                            <a href="#/employees" class="btn btn-sm btn-default pull-right" ng-disabled="isProcessing" style="margin-left: 10px">Voltar</a>
+                            <button class="btn btn-sm btn-danger pull-right" ng-disabled="isProcessing" ng-show="user._id != undefined && isAdmin && !Me" style="margin-left: 10px" ng-click="delete()">Excluir</button>
+                            <button class="btn btn-sm btn-success pull-right" ng-disabled="isProcessing" ng-show="Me || isAdmin" ng-click="save()">Salvar</button>
                         </div>
                     </div>
                 </div>

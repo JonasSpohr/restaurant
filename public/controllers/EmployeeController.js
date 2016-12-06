@@ -9,17 +9,20 @@ _myApp
 function ($scope, $routeParams,  $location, $localStorage, EmployeeFactory) {
     $scope.user = {};
 
+    $scope.isProcessing = false;
     $scope.MyId = $localStorage.user.id;
     $scope.Me = $localStorage.user.id == $routeParams.id;
     $scope.isAdmin = $localStorage.user.type == 'admin';
 
     $scope.delete = function(){
         if(confirm('Você confirma a exclusão?')){
+            $scope.isProcessing = true;
             var employee = EmployeeFactory.delete({
                 id : $routeParams.id
             }, function(){
                 if(employee.error){
                     alert('Não foi possível excluir os dados do funcionário.');
+                    $scope.isProcessing = false;
                 }else{
                     alert('Operação efetuada com sucesso.');
                     $location.url('/employees');
@@ -46,6 +49,7 @@ function ($scope, $routeParams,  $location, $localStorage, EmployeeFactory) {
             return;
         }
 
+        $scope.isProcessing = true;
         if($routeParams.id == 0){
             var employee = new EmployeeFactory({ 
                 name: $scope.user.name,
@@ -63,6 +67,7 @@ function ($scope, $routeParams,  $location, $localStorage, EmployeeFactory) {
             });
         }else{
             EmployeeFactory.update({id: $routeParams.id}, $scope.user, function(){
+                 $scope.isProcessing = false;
                 alert('Operação efetuada com sucesso.');
             });
         }

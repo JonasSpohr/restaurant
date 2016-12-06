@@ -124,9 +124,9 @@
                     <hr>
                     <div class="row">
                         <div class="col-md-12">
-                            <a href="#/providers" class="btn btn-sm btn-default pull-right" style="margin-left: 10px">Voltar</a>
-                            <button class="btn btn-sm btn-danger pull-right" ng-show="Provider._id != undefined && isAdmin" style="margin-left: 10px" ng-click="delete()">Excluir</button>
-                            <button class="btn btn-sm btn-success pull-right" ng-show="isAdmin" ng-click="save()">Salvar</button>
+                            <a href="#/providers" class="btn btn-sm btn-default pull-right" ng-disabled="isProcessing" style="margin-left: 10px">Voltar</a>
+                            <button class="btn btn-sm btn-danger pull-right" ng-disabled="isProcessing" ng-show="Provider._id != undefined && isAdmin" style="margin-left: 10px" ng-click="delete()">Excluir</button>
+                            <button class="btn btn-sm btn-success pull-right" ng-disabled="isProcessing" ng-show="isAdmin" ng-click="save()">Salvar</button>
                         </div>
                     </div>
                 </div>

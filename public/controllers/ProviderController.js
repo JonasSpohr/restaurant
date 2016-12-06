@@ -8,15 +8,18 @@ _myApp
     .controller('ProviderCtrl', ['$scope', '$routeParams', '$location', '$localStorage', 'ProviderFactory',
         function ($scope, $routeParams, $location, $localStorage, ProviderFactory) {
             $scope.Provider = { address: {} };
+            $scope.isProcessing = false;
 
             $scope.isAdmin = $localStorage.user.type == 'admin';
 
             $scope.delete = function () {
                 if (confirm('Você confirma a exclusão?')) {
+                    $scope.isProcessing = true;
                     var Provider = ProviderFactory.delete({
                         id: $routeParams.id
                     }, function () {
                         if (Provider.error) {
+                            $scope.isProcessing = false;
                             alert('Não foi possível excluir os dados do funcionário.');
                         } else {
                             alert('Operação efetuada com sucesso.');
@@ -48,6 +51,7 @@ _myApp
                     return;
                 }
 
+                $scope.isProcessing = true;
                 $scope.Provider.companyId = $localStorage.user.companyId;
                 if ($routeParams.id == 0) {
                     var Provider = new ProviderFactory($scope.Provider);
@@ -59,6 +63,7 @@ _myApp
                 } else {
                     ProviderFactory.update({ id: $routeParams.id }, $scope.Provider, function () {
                         alert('Operação efetuada com sucesso.');
+                        $scope.isProcessing = false;
                     });
                 }
             }
