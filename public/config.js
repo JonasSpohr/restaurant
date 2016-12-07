@@ -92,6 +92,10 @@ _myApp.config(['$routeProvider', function ($routeProvider) {
                 return (user != null && user != undefined);
             }
         })
+        .when('/pwdrecover', {
+            templateUrl: '/pwdrecover.html',
+            controller: 'PwdRecoverCtrl'
+        })
         .when('/signup', {
             templateUrl: '/signup.html',
             controller: 'SignupCtrl'

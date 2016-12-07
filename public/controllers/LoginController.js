@@ -4,12 +4,13 @@ _myApp
         'auth': { method:'POST', url : '/login/auth' }
     });
 }])
-.controller('LoginCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'UserFactory', 'md5','$localStorage', function ($scope, $rootScope, $routeParams,  $location, UserFactory, md5, $localStorage) {
+.controller('LoginCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'UserFactory', 'md5','$localStorage',
+    function ($scope, $rootScope, $routeParams,  $location, UserFactory, md5, $localStorage) {
     $scope.data = {};
 
     $scope.login = function () {
-        if(!$scope.data.user || $scope.data.user == ''){
-            alert('O usuário deve ser informado');
+        if(!$scope.data.email || $scope.data.email == ''){
+            alert('O email deve ser informado');
             return;
         }
 
@@ -20,7 +21,7 @@ _myApp
 
         $scope.isProcessing = true;
         var user = UserFactory.auth({ 
-            email : $scope.data.user,
+            email : $scope.data.email,
             pwd : md5.createHash($scope.data.password || '')
         }, function(){
             if(user.error){

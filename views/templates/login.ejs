@@ -9,14 +9,14 @@
         <p>ADM Eventos - Acesso restrito.
         </p>
         <div class="form-group">
-            <input type="email" autocomplete="off" class="form-control" placeholder="Usuário" ng-model="data.user" required="" maxlength="250">
+            <input type="email" autocomplete="off" class="form-control" placeholder="Email" ng-model="data.email" required="" maxlength="250">
         </div>
         <div class="form-group">
             <input type="password" autocomplete="off" class="form-control" placeholder="Senha" ng-model="data.password" required=""  maxlength="250">
         </div>
         <button type="button" ng-click="login()" ng-disabled="isProcessing" class="btn btn-primary block full-width m-b">Acessar</button>
     
-        <a href="#"><small>Esqueceu a senha?</small></a>
+        <a href="#/pwdrecover"><small>Esqueceu a senha?</small></a>
         <p class="text-muted text-center"><small>Não tem conta ainda?</small></p>
         <a class="btn btn-sm btn-white btn-block" href="#/signup">Criar conta</a>
         <p class="m-t"> <small>ADM Eventos &copy; 2017</small> </p>

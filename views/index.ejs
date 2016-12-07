@@ -10,7 +10,7 @@
     <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
     <link href="/stylesheets/font/css/font-awesome.css" rel="stylesheet">
     <link href="/stylesheets/animate.css" rel="stylesheet">
-    
+
     <link href="/stylesheets/fullcalendar.min.css" rel="stylesheet">
 
     <link href="/stylesheets/style.css" rel="stylesheet">
@@ -29,12 +29,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngMask/3.1.1/ngMask.min.js"></script>
 
-    <script src="js/md5.js"></script>        
+    <script src="js/md5.js"></script>
     <script src="js/moment.js"></script>
     <script src="js/pt-br.js"></script>
-    
+
     <script src="js/fullcalendar.min.js"></script>
-    
+
     <script src="js/ui-bootstrap-tpls-0.12.0.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/calendar.js"></script>
@@ -43,7 +43,7 @@
 <body ng-controller="BodyCtrl" class="{{cssAdd}}">
     <div id="wrapper">
         <ng-view></ng-view>
-    </div>    
+    </div>
 
     <script src="/app.js"></script>
     <script src="/controllers/BodyController.js"></script>
@@ -63,11 +63,15 @@
     <script src="/controllers/EventController.js"></script>
     <script src="/controllers/AgendaController.js"></script>
     <script src="/controllers/ChangePwdController.js"></script>
+    <script src="/controllers/PwdRecoverController.js"></script>
     <script src="/config.js"></script>
     <!-- Template -->
 
     <script type="text/ng-template" id="/login.html">
         <%- include templates/login.ejs %>
+      </script>
+    <script type="text/ng-template" id="/pwdrecover.html">
+        <%- include templates/pwdrecover.ejs %>
       </script>
     <script type="text/ng-template" id="/signup.html">
         <%- include templates/signup.ejs %>
@@ -133,7 +137,7 @@
           <%- include bottom.ejs %>         
     </script>
 
-   
+
     <script>
         function doThisWhenTheHashChanges() {
           var path = $(location).attr('hash');
