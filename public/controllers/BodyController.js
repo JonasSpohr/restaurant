@@ -1,5 +1,7 @@
 _myApp
 .controller('BodyCtrl', ['$scope', '$rootScope', '$localStorage','$location', function ($scope, $rootScope, $localStorage, $location) {
+    $scope.cssHome = 'active';
+    
     $scope.showHideMenu = function(){
         if(!angular.element( document.querySelector( 'body' ) ).hasClass('mini-navbar')){
             angular.element( document.querySelector( 'body' ) ).addClass('mini-navbar')
@@ -23,6 +25,7 @@ _myApp
         $scope.cssCli = '';
         $scope.cssAgen = '';
         $scope.cssCad = '';
+        $scope.cssHome = '';
 
         switch(item){
             case 'func':
@@ -44,6 +47,10 @@ _myApp
             case 'agen':
                 $scope.cssCad = '';
                 $scope.cssAgen = 'active';
+            break;
+             case 'home':
+                $scope.cssCad = '';
+                $scope.cssHome = 'active';
             break;
         }
     }
