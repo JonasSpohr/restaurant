@@ -32,6 +32,14 @@
                                 <input type="text" class="form-control" ng-model="ClientEvent.contactName" placeholder="Nome do contato">
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Responsável pelo evento</label>
+                                <select class="form-control" ng-model="ClientEvent.ownerId">
+                                    <option ng-repeat="e in employees" value="{{e._id}}">{{e.name}}</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>                    
                     <hr>
                     <div class="row">
@@ -55,34 +63,34 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label>Local</label>
                                 <input type="text" class="form-control" g-places-autocomplete ng-model="ClientEvent.event.place" placeholder="Local">
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Data</label>
                                 <input type="text" class="form-control" ng-model="ClientEvent.event.date" placeholder="Data" mask="99/99/9999">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Qtd. de pessoas</label>
                                 <input type="text" class="form-control" ng-model="ClientEvent.event.people" placeholder="Qtd. de pessoas">
                             </div>
-                        </div>
+                        </div>                       
+                    </div>
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Início</label>
                                 <input type="text" class="form-control" ng-model="ClientEvent.event.timeBegin" placeholder="Início" mask="99:99">
                             </div>
-                        </div>                        
-                    </div>
-                    <div class="row">
+                        </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Fim</label>

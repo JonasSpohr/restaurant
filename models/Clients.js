@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var EventSchema = new mongoose.Schema({
 	created: { type: Date, default: Date.now },
 	contactName: String,
+	ownerId: String,
 	event: {
 		type: { type: String },
 		title: String,

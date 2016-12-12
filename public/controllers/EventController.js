@@ -1,17 +1,22 @@
 _myApp
-    .factory('EventFactory', ['$resource', function($resource) {
+    .factory('EventFactory', ['$resource', function ($resource) {
         return $resource('/clients/:id', null, {
             'update': { method: 'PUT' },
             'find': { method: 'GET', url: '/clients/byId/:id' }
         });
     }])
-    .controller('EventCtrl', ['$scope', '$routeParams', '$location', '$localStorage', 'EventFactory',
-        function($scope, $routeParams, $location, $localStorage, EventFactory) {
+    .factory('EmployeesFactory', ['$resource', function ($resource) {
+        return $resource('/users/:id', null, {
+            'all': { method: 'GET', url: '/users/all' }
+        });
+    }])
+    .controller('EventCtrl', ['$scope', '$routeParams', '$location', '$localStorage', 'EventFactory', 'EmployeesFactory',
+        function ($scope, $routeParams, $location, $localStorage, EventFactory, EmployeesFactory) {
 
-            $scope.goBack = function(){
-                if($routeParams.back){
+            $scope.goBack = function () {
+                if ($routeParams.back) {
                     $location.url('/agenda');
-                }else{
+                } else {
                     $location.url('/client?id=' + $routeParams.clientId);
                 }
             }
@@ -21,11 +26,11 @@ _myApp
 
             $scope.isAdmin = $localStorage.user.type == 'admin';
 
-            $scope.delete = function() {
+            $scope.delete = function () {
                 if (confirm('Você confirma a exclusão?')) {
                     var _client = EventFactory.find({
                         id: $routeParams.clientId
-                    }, function() {
+                    }, function () {
                         for (i = 0; i < _client.result.events.length; i++) {
                             if (_client.result.events[i]._id == $routeParams.id) {
                                 _client.result.events.splice(i, 1);
@@ -33,7 +38,7 @@ _myApp
                             }
                         }
 
-                        EventFactory.update({ id: $routeParams.clientId }, _client.result, function() {
+                        EventFactory.update({ id: $routeParams.clientId }, _client.result, function () {
                             alert('Operação efetuada com sucesso.');
                             $location.url('/client?id=' + $routeParams.clientId);
                         });
@@ -41,11 +46,16 @@ _myApp
                 }
             }
 
-            $scope.save = function() {
+            $scope.save = function () {
                 if (!$scope.ClientEvent.contactName || $scope.ClientEvent.contactName == '') {
                     alert('O nome do contato deve ser informado');
                     return;
                 }
+                if (!$scope.ClientEvent.ownerId || $scope.ClientEvent.ownerId == '') {
+                    alert('O responsável pelo evento deve ser informado.');
+                    return;
+                }
+
                 if (!$scope.ClientEvent.event) {
                     alert('Os dados do evento devem ser informados.');
                     return;
@@ -67,13 +77,16 @@ _myApp
                     return;
                 }
 
+                if ($scope.ClientEvent.event.place.formatted_address)
+                    $scope.ClientEvent.event.place = $scope.ClientEvent.event.place.formatted_address;
+
                 //$scope.ClientEvent.companyId = $localStorage.user.companyId;
                 if ($routeParams.id == 0) {
                     var _client = EventFactory.find({
                         id: $routeParams.clientId
-                    }, function() {
+                    }, function () {
                         _client.result.events.push($scope.ClientEvent);
-                        EventFactory.update({ id: $routeParams.clientId }, _client.result, function(data) {
+                        EventFactory.update({ id: $routeParams.clientId }, _client.result, function (data) {
                             //alert(JSON.stringify(data.result))
                             if (!data.result) {
                                 alert('Não foi possível salvar os dados. Erro:' + JSON.stringify(data));
@@ -84,11 +97,11 @@ _myApp
                                     if (_find.error) {
                                         alert('Não foi possível consultar os dados do evento.');
                                     } else {
-                                        var _event = _find.result.events[_find.result.events.length -1];
-                                         alert('Operação efetuada com sucesso.');                                
-                                        $location.url('/event?id=' +_event._id + '&clientId=' + $routeParams.clientId);
+                                        var _event = _find.result.events[_find.result.events.length - 1];
+                                        alert('Operação efetuada com sucesso.');
+                                        $location.url('/event?id=' + _event._id + '&clientId=' + $routeParams.clientId);
                                     }
-                                });                               
+                                });
                             }
                         });
                     });
@@ -96,7 +109,7 @@ _myApp
                 } else {
                     var _client = EventFactory.find({
                         id: $routeParams.clientId
-                    }, function() {
+                    }, function () {
                         for (i = 0; i < _client.result.events.length; i++) {
                             if (_client.result.events[i]._id == $routeParams.id) {
                                 _client.result.events[i] = $scope.ClientEvent;
@@ -104,7 +117,7 @@ _myApp
                             }
                         }
 
-                        EventFactory.update({ id: $routeParams.clientId }, _client.result, function(data) {
+                        EventFactory.update({ id: $routeParams.clientId }, _client.result, function (data) {
                             if (!data.result) {
                                 alert('Não foi possível salvar os dados. Erro:' + JSON.stringify(data));
                             } else {
@@ -115,11 +128,21 @@ _myApp
                 }
             }
 
-            if ($routeParams.id != 0) {
-                angular.element(document).ready(function() {
+            angular.element(document).ready(function () {
+                var employees = EmployeesFactory.all({
+                    companyId: $localStorage.user.companyId
+                }, function () {
+                    if (employees.error) {
+                        //alert('Não foi possível consultar os funcionários.');
+                    } else {
+                        $scope.employees = employees.result;
+                    }
+                });
+
+                if ($routeParams.id != 0) {
                     var _client = EventFactory.find({
                         id: $routeParams.clientId
-                    }, function() {
+                    }, function () {
                         for (i = 0; i < _client.result.events.length; i++) {
                             if (_client.result.events[i]._id == $routeParams.id) {
                                 $scope.ClientEvent = _client.result.events[i];
@@ -128,6 +151,6 @@ _myApp
                         }
 
                     });
-                });
-            }
+                }
+            });
         }]);
