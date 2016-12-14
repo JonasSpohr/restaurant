@@ -155,7 +155,7 @@
                                             </thead>
                                             <tbody>
                                                 <tr ng-repeat="i in Client.events">
-                                                    <td>{{i.event.title}}</td>
+                                                    <td>{{i.event.title}} <span class="label label-warning" ng-show="i.event.providersPendency">Evento com pendências!</span></td>
                                                     <td>{{i.event.type}}</td>
                                                     <td class="hidden-xs">{{i.event.date}}</td>
                                                     <td>{{i.contactName}}</td>
