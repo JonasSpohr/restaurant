@@ -54,6 +54,47 @@
                             </div>
                         </div>
                     </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Logradouro</label>
+                                <input type="text" class="form-control" ng-model="user.address.street" placeholder="Logradouro">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Número</label>
+                                <input type="text" class="form-control" ng-model="user.address.number" placeholder="Número">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Complemento</label>
+                                <input type="text" class="form-control" ng-model="user.address.complement" placeholder="Complemento">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Cidade</label>
+                                <input type="text" class="form-control" ng-model="user.address.city" placeholder="Cidade">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Estado</label>
+                                <input type="text" class="form-control" ng-model="user.address.state" placeholder="Estado">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>CEP</label>
+                                <input type="text" class="form-control" ng-model="user.address.zipCode" placeholder="CEP" mask="99999-999">
+                            </div>
+                        </div>
+                    </div>
                     <div class="row" ng-show="isAdmin">
                         <div class="col-md-6">
                             <div class="checkbox">
@@ -61,13 +102,14 @@
                                     <input type="checkbox" ng-model="user.active" > Ativo
                                 </label>
                             </div>
-                        </div>                        
+                        </div>
                     </div>
                     <hr>
                     <div class="row">
                         <div class="col-md-12">
                             <a href="#/employees" class="btn btn-sm btn-default pull-right" ng-disabled="isProcessing" style="margin-left: 10px">Voltar</a>
-                            <button class="btn btn-sm btn-danger pull-right" ng-disabled="isProcessing" ng-show="user._id != undefined && isAdmin && !Me" style="margin-left: 10px" ng-click="delete()">Excluir</button>
+                            <button class="btn btn-sm btn-danger pull-right" ng-disabled="isProcessing" ng-show="user._id != undefined && isAdmin && !Me"
+                                style="margin-left: 10px" ng-click="delete()">Excluir</button>
                             <button class="btn btn-sm btn-success pull-right" ng-disabled="isProcessing" ng-show="Me || isAdmin" ng-click="save()">Salvar</button>
                         </div>
                     </div>

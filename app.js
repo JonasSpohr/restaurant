@@ -24,7 +24,7 @@ var PWD = process.env.DBPWD || 'Spohr1010';
 var USER =  process.env.USER || 'root';
 
 var conn = 'mongodb://'+ USER +':' + PWD +'@ds159737.mlab.com:59737/events';
-console.log(conn)
+
 mongoose.connect(conn)
   .then(() =>  console.log('connection succesful'))
   .catch((err) => console.error(err));
