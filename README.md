@@ -1,7 +1,13 @@
-# Todo
+# About
+This is a project where people can vote on their favorite restaurant to ha lunch.
 
-Angular, NodeJS, ExpressJS and MongoDB RESTful API Tutorial.
-See [Creating a RESTful API Tutorial](http://adrianmejia.com/blog/2014/10/01/creating-a-restful-api-tutorial-with-nodejs-and-mongodb/) post for more details.
+# Rules
+
+1 - One restaurant cannot be choosen on the same week
+
+2 - One user can vote just one time per day
+
+3 - The user need to have a interface to check the winner
 
 # Installation
 
@@ -14,5 +20,5 @@ npm install
 And start the program
 
 ```bash
-npm start
+node bin/www
 ```

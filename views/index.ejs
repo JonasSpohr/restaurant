@@ -2,153 +2,102 @@
 <html ng-app="app">
 
 <head>
-    <title>
-        <%= title %>
-    </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    <%= title %>
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
-    <link href="/stylesheets/font/css/font-awesome.css" rel="stylesheet">
-    <link href="/stylesheets/animate.css" rel="stylesheet">
+  <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+  <link href="/stylesheets/font/css/font-awesome.css" rel="stylesheet">
+  <link href="/stylesheets/animate.css" rel="stylesheet">
 
-    <link href="/stylesheets/fullcalendar.min.css" rel="stylesheet">
+  <link href="/stylesheets/fullcalendar.min.css" rel="stylesheet">
 
-    <link href="/stylesheets/style.css" rel="stylesheet">
-    <link href="/stylesheets/autocomplete.css" rel="stylesheet">
+  <link href="/stylesheets/style.css" rel="stylesheet">
+  <link href="/stylesheets/autocomplete.css" rel="stylesheet">
 
-    <script src="/js/jquery-2.1.1.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="js/metisMenu/jquery.metisMenu.js"></script>
-    <script src="js/slimscroll/jquery.slimscroll.min.js"></script>
-    <!-- Custom and plugin javascript -->
-    <script src="js/inspinia.js"></script>
-    <script src="js/pace/pace.min.js"></script>
-    <!-- Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-resource.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngMask/3.1.1/ngMask.min.js"></script>
+  <script src="/js/jquery-2.1.1.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="js/metisMenu/jquery.metisMenu.js"></script>
+  <script src="js/slimscroll/jquery.slimscroll.min.js"></script>
+  <!-- Custom and plugin javascript -->
+  <script src="js/inspinia.js"></script>
+  <script src="js/pace/pace.min.js"></script>
+  <!-- Libraries -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-resource.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ngMask/3.1.1/ngMask.min.js"></script>
 
-    <script src="js/md5.js"></script>
-    <script src="js/moment.js"></script>
-    <script src="js/pt-br.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCVZHRBjtL0g_TZsIyNFAvVXr11xiwMCRE"></script>
-    <script src="js/autocomplete.js"></script>
+  <script src="js/md5.js"></script>
+  <script src="js/moment.js"></script>
+  <script src="js/pt-br.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCVZHRBjtL0g_TZsIyNFAvVXr11xiwMCRE"></script>
+  <script src="js/autocomplete.js"></script>
 
-    <script src="js/fullcalendar.min.js"></script>
+  <script src="js/fullcalendar.min.js"></script>
 
-    <script src="js/ui-bootstrap-tpls-0.12.0.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/calendar.js"></script>
+  <script src="js/ui-bootstrap-tpls-0.12.0.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/calendar.js"></script>
 </head>
 
 <body ng-controller="BodyCtrl" class="{{cssAdd}}">
-    <div id="wrapper">
-        <ng-view></ng-view>
-    </div>
+  <div id="wrapper">
+    <ng-view></ng-view>
+  </div>
 
-    <script src="/app.js"></script>
-    <script src="/controllers/BodyController.js"></script>
-    <script src="/controllers/NavController.js"></script>
-    <script src="/controllers/LogoutController.js"></script>
-    <script src="/controllers/LoginController.js"></script>
-    <script src="/controllers/HomeController.js"></script>
-    <script src="/controllers/SignupController.js"></script>
-    <script src="/controllers/EmployeesController.js"></script>
-    <script src="/controllers/EmployeeController.js"></script>
-    <script src="/controllers/RecepcionistsController.js"></script>
-    <script src="/controllers/RecepcionistController.js"></script>
-    <script src="/controllers/PlacesController.js"></script>
-    <script src="/controllers/PlaceController.js"></script>
-    <script src="/controllers/ClientsController.js"></script>
-    <script src="/controllers/ClientController.js"></script>
-    <script src="/controllers/EventController.js"></script>
-    <script src="/controllers/AgendaController.js"></script>
-    <script src="/controllers/ChangePwdController.js"></script>
-    <script src="/controllers/PwdRecoverController.js"></script>
-    <script src="/config.js"></script>
-    <!-- Template -->
+  <script src="/app.js"></script>
+  <script src="/controllers/BodyController.js"></script>
+  <script src="/controllers/NavController.js"></script>
+  <script src="/controllers/LogoutController.js"></script>
+  <script src="/controllers/LoginController.js"></script>
+  <script src="/controllers/HomeController.js"></script>
+  <script src="/controllers/SignupController.js"></script>
+  <script src="/controllers/PlacesController.js"></script>
+  <script src="/controllers/PlaceController.js"></script>
+  <script src="/controllers/ResultController.js"></script>
+  <script src="/config.js"></script>
+  <!-- Template -->
 
-    <script type="text/ng-template" id="/login.html">
-        <%- include templates/login.ejs %>
-      </script>
-    <script type="text/ng-template" id="/pwdrecover.html">
-        <%- include templates/pwdrecover.ejs %>
-      </script>
-    <script type="text/ng-template" id="/signup.html">
-        <%- include templates/signup.ejs %>
-      </script>
-    <script type="text/ng-template" id="/home.html">
-          <%- include top.ejs %>
-          <%- include templates/home.ejs %>
-          <%- include bottom.ejs %>         
-      </script>
-    <script type="text/ng-template" id="/employees.html">
-          <%- include top.ejs %>
-          <%- include templates/employees.ejs %>
-          <%- include bottom.ejs %>         
-      </script>
-    <script type="text/ng-template" id="/employee.html">
-          <%- include top.ejs %>
-          <%- include templates/employee.ejs %>
-          <%- include bottom.ejs %>         
-      </script>
-    <script type="text/ng-template" id="/recepcionists.html">
-          <%- include top.ejs %>
-          <%- include templates/recepcionists.ejs %>
-          <%- include bottom.ejs %>         
-      </script>
-    <script type="text/ng-template" id="/recepcionist.html">
-          <%- include top.ejs %>
-          <%- include templates/recepcionist.ejs %>
-          <%- include bottom.ejs %>         
-      </script>
-    <script type="text/ng-template" id="/places.html">
-          <%- include top.ejs %>
-          <%- include templates/places.ejs %>
-          <%- include bottom.ejs %>         
-      </script>
-    <script type="text/ng-template" id="/place.html">
-          <%- include top.ejs %>
-          <%- include templates/place.ejs %>
-          <%- include bottom.ejs %>         
-      </script>
-    <script type="text/ng-template" id="/clients.html">
-          <%- include top.ejs %>
-          <%- include templates/clients.ejs %>
-          <%- include bottom.ejs %>         
-      </script>
-    <script type="text/ng-template" id="/client.html">
-          <%- include top.ejs %>
-          <%- include templates/client.ejs %>
-          <%- include bottom.ejs %>         
-    </script>
-    <script type="text/ng-template" id="/event.html">
-          <%- include top.ejs %>
-          <%- include templates/event.ejs %>
-          <%- include bottom.ejs %>         
-    </script>
-    <script type="text/ng-template" id="/agenda.html">
-          <%- include top.ejs %>
-          <%- include templates/agenda.ejs %>
-          <%- include bottom.ejs %>         
-    </script>
-    <script type="text/ng-template" id="/changepwd.html">
-          <%- include top.ejs %>
-          <%- include templates/changepwd.ejs %>
-          <%- include bottom.ejs %>         
-    </script>
+  <script type="text/ng-template" id="/login.html">
+    <%- include templates/login.ejs %>
+  </script>
+
+  <script type="text/ng-template" id="/signup.html">
+    <%- include templates/signup.ejs %>
+  </script>
+  <script type="text/ng-template" id="/home.html">
+    <%- include top.ejs %>
+    <%- include templates/home.ejs %>
+    <%- include bottom.ejs %>         
+  </script>
+  <script type="text/ng-template" id="/places.html">
+    <%- include top.ejs %>
+    <%- include templates/places.ejs %>
+    <%- include bottom.ejs %>         
+  </script>
+  <script type="text/ng-template" id="/place.html">
+    <%- include top.ejs %>
+    <%- include templates/place.ejs %>
+    <%- include bottom.ejs %>         
+  </script>
+  <script type="text/ng-template" id="/result.html">
+    <%- include top.ejs %>
+    <%- include templates/result.ejs %>
+    <%- include bottom.ejs %>         
+  </script>
 
 
-    <script>
-        function doThisWhenTheHashChanges() {
-          var path = $(location).attr('hash');
-          $('li').removeClass('active');
-          $('a[href^="'+path+'"]').closest('li').addClass('active');
-          $('a[href^="'+path+'"]').parent().parent().closest('li').addClass('active');
-        }
-      </script>
+  <script>
+    function doThisWhenTheHashChanges() {
+      var path = $(location).attr('hash');
+      $('li').removeClass('active');
+      $('a[href^="'+path+'"]').closest('li').addClass('active');
+      $('a[href^="'+path+'"]').parent().parent().closest('li').addClass('active');
+    }
+  </script>
 </body>
 
 </html>

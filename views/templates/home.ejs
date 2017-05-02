@@ -16,9 +16,26 @@
                     <h5>Vote</h5>
                 </div>
                 <div class="ibox-content ui-calendar">
-                    
+                    <div class="jumbotron" ng-show="canVote">
+                      <p>Please choose below the restaurant for today :)</p>
+
+                        <div class="radio" ng-repeat="place in places">
+                            <label>
+                            <input type="radio" name="optValue" ng-model="model.placeSelected" value="{{place._id}}">
+                            {{place.name}}
+                            </label>
+                        </div>
+    
+                    <p><a class="btn btn-primary btn-md" ng-click="vote()" ng-disabled="isProcessing || !canVote" role="button" style="margin-top: 15px">Vote</a></p>
+                </div>
+
+                <div class="ibox-content ui-calendar">
+                    <div class="jumbotron" ng-show="!canVote && !isProcessing" style="text-align: center;">
+                      <p>You already have made you vote. Please wait all your friends to vote :)</p>
+                      <p style="padding-top: 30px"><a class="btn btn-lg btn-success" href="#/result">Check result</a></p>                      
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>

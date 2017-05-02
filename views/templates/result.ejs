@@ -1,0 +1,41 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Result</h2>
+        <ol class="breadcrumb">
+            <li class="active">
+                <strong>Result</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Result</h5>
+                </div>
+                <div class="ibox-content ui-calendar">
+                    <div class="jumbotron" ng-show="hasWinner && !isProcessing" style="text-align: center;">
+                    <p><u>The winner is: <strong>{{winner.name}}</strong></u></p>
+
+                      <br>
+                      <br>
+                      <p style="font-size: 18px">For tomorrow we gonna have these places, think very much on your next choice :)</p>
+                      <div ng-repeat="place in placesForTomorrow">
+                        <label>                            
+                            {{place.name}}
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+            <div class="ibox-content ui-calendar">
+                <div class="jumbotron" ng-show="!hasWinner && !isProcessing" style="text-align: center;">
+                    <p>We dont have a winner yet. Please wait until <strong>11:45AM</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
