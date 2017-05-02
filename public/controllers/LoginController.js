@@ -10,12 +10,12 @@ _myApp
 
     $scope.login = function () {
         if(!$scope.data.email || $scope.data.email == ''){
-            alert('O email deve ser informado');
+            alert('The email must be informed');
             return;
         }
 
         if(!$scope.data.password || $scope.data.password == ''){
-            alert('A senha deve ser informada');
+            alert('The password must be informed');
             return;
         }
 
@@ -25,20 +25,16 @@ _myApp
             pwd : md5.createHash($scope.data.password || '')
         }, function(){
             if(user.error){
-                alert('Email ou senha são inválidos!');
+                alert('Email or password are invalid!');
             }else{
-                if(!user.result.active){
-                    alert('Usuário não está ativo! Favor entrar em contato pelo email contato@admeventos.com.');
-                }else{
-                    $localStorage.user = {
-                        name : user.result.name,
-                        email : user.result.email,
-                        type: user.result.type,
-                        companyId: user.result.companyId,
-                        id: user.result._id
-                    };
-                    $location.url('/home');
-                }                
+                
+                $localStorage.user = {
+                    name : user.result.name,
+                    email : user.result.email,                    
+                    id: user.result._id
+                };
+                $location.url('/home');
+                                
             }
             $scope.isProcessing = false;
         });

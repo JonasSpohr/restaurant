@@ -1,0 +1,45 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Places</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#/home">Home</a>
+            </li>
+            <li>
+                <a href="#/places">Places</a>
+            </li>
+            <li class="active">
+                <strong>Place</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Place info</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" class="form-control" ng-model="Place.name" placeholder="Name">
+                            </div>
+                        </div>                        
+                    </div>                    
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="#/places" class="btn btn-sm btn-default pull-right" ng-disabled="isProcessing" style="margin-left: 10px">Back</a>
+                            <button class="btn btn-sm btn-danger pull-right" ng-disabled="isProcessing" ng-show="Place._id != undefined" style="margin-left: 10px" ng-click="delete()">Delete</button>
+                            <button class="btn btn-sm btn-success pull-right" ng-disabled="isProcessing"  ng-click="save()">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

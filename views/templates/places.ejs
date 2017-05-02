@@ -1,0 +1,57 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Places</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#/home">Home</a>
+            </li>
+            <li class="active">
+                <strong>Place</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Places</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-sm btn-success pull-right" ng-click="new()">Add</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="i in items">
+                                        <td>{{i.name}}</td>                                        
+                                        <td style="text-align: center">
+                                            <button class="btn btn-xs btn-danger" ng-click="delete(i._id)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr ng-show="items.length == 0 && !isLoading" style="text-align: center">
+                                        <td colspan="2">0 places found</td>
+                                    </tr>
+                                    <tr ng-show="isLoading">
+                                        <td colspan="2">Loading...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

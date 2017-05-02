@@ -1,15 +1,18 @@
 var express = require('express');
 var router = express.Router();
 
-var SignupContact = require('../models/SignupContact.js');
+var User = require('../models/User.js');
 
-router.put('/', function(req, res, next) {
-  SignupContact.create(req.body, function (err, contact) {
-    if (err) {
-        res.json({error : err});
-    }
-    res.json(contact);
-  });
+router.post('/', function(req, res, next) {
+    var newUser = new User(req.body);
+    newUser.save(function (err) {
+        if (err) return res.send(JSON.stringify({ error : err }));
+
+        //do not send the password, ;)
+        delete newUser.pwd;
+
+        res.send(JSON.stringify({ result : newUser }));
+    });
 });
 
 module.exports = router;

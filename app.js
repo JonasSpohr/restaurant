@@ -10,7 +10,7 @@ var users = require('./routes/users');
 var login = require('./routes/login');
 var signup = require('./routes/signup');
 var recepcionists = require('./routes/recepcionists');
-var providers = require('./routes/providers');
+var places = require('./routes/places');
 var clients = require('./routes/clients');
 
 // load mongoose package
@@ -20,10 +20,7 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 // connect to MongoDB
-var PWD = process.env.DBPWD || 'Spohr1010';
-var USER =  process.env.USER || 'root';
-
-var conn = 'mongodb://'+ USER +':' + PWD +'@ds159737.mlab.com:59737/events';
+var conn = 'mongodb://restaurant:123456@ds127731.mlab.com:27731/restaurants';
 
 mongoose.connect(conn)
   .then(() =>  console.log('connection succesful'))
@@ -48,7 +45,7 @@ app.use('/users', users);
 app.use('/login', login);
 app.use('/signup', signup);
 app.use('/recepcionists', recepcionists);
-app.use('/providers', providers);
+app.use('/places', places);
 app.use('/clients', clients);
 
 // catch 404 and forward to error handler

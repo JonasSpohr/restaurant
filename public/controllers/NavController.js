@@ -9,6 +9,5 @@ _myApp
             $location.path('/login');
         }
     }
-
    
 }]);

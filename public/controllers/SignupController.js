@@ -1,56 +1,38 @@
 _myApp
 .factory('SignupFactory', ['$resource', function($resource){
     return $resource('/signup/:id', null, {
-        'save' : {method : 'PUT'}
+        'save' : {method : 'POST'}
     });
 }])
-.controller('SignupCtrl', ['$scope', '$routeParams', '$location', 'SignupFactory', function ($scope, $routeParams,  $location, SignupFactory) {
-    $scope.contact = {};
+.controller('SignupCtrl', ['$scope', '$routeParams', '$location', 'SignupFactory', 'md5', function ($scope, $routeParams,  $location, SignupFactory, md5) {
+    $scope.user = {};
 
     $scope.save = function(){
-        if(!$scope.contact.name || $scope.contact.name == ''){
-            alert('O nome deve ser informado');
+        if(!$scope.user.name || $scope.user.name == ''){
+            alert('The name must be informed');
+            return;
+        }        
+
+        if(!$scope.user.email || $scope.user.email == ''){
+            alert('The email must be informed');
             return;
         }
 
-        if(!$scope.contact.companyName || $scope.contact.companyName == ''){
-            alert('O nome da empresa deve ser informado');
-            return;
-        }
-
-        if(!$scope.contact.state || $scope.contact.state == ''){
-            alert('O estado deve ser informado');
-            return;
-        }
-
-        if(!$scope.contact.city || $scope.contact.city == ''){
-            alert('A cidade deve ser informada');
-            return;
-        }
-
-        if(!$scope.contact.phone || $scope.contact.phone == ''){
-            alert('O telefone deve ser informado');
-            return;
-        }
-
-        if(!$scope.contact.email || $scope.contact.email == ''){
-            alert('O email deve ser informado');
+        if(!$scope.user.pwd || $scope.user.pwd == ''){
+            alert('The password must be informed');
             return;
         }
 
         $scope.isProcessing = true;
-        var contact = SignupFactory.save({
-            name : $scope.contact.name,
-            companyName : $scope.contact.companyName,
-            state : $scope.contact.state,
-            city : $scope.contact.city,
-            phone : $scope.contact.phone,
-            email : $scope.contact.email
+        var user = SignupFactory.save({
+            name : $scope.user.name,            
+            email : $scope.user.email,
+            pwd: md5.createHash($scope.user.pwd || '')
         }, function(){
-            if(contact.error){
-                alert('Não foi possivel salvar o contato!');
+            if(user.error){
+                alert('Sorry, unable to create the user!');
             }else{
-                alert('Contato enviado com sucesso. Em breve entratemos em contato :)');
+                alert('User created successfully :)');
                 $location.url('/login');
             }
 

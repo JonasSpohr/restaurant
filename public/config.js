@@ -43,16 +43,16 @@ _myApp.config(['$routeProvider', function ($routeProvider) {
                 return (user != null && user != undefined);
             }
         })
-        .when('/providers', {
-            templateUrl: '/providers.html',
-            controller: 'ProvidersCtrl',
+        .when('/places', {
+            templateUrl: '/places.html',
+            controller: 'PlacesCtrl',
             auth: function (user) {
                 return (user != null && user != undefined);
             }
         })
-        .when('/provider', {
-            templateUrl: '/provider.html',
-            controller: 'ProviderCtrl',
+        .when('/place', {
+            templateUrl: '/place.html',
+            controller: 'PlaceCtrl',
             auth: function (user) {
                 return (user != null && user != undefined);
             }
