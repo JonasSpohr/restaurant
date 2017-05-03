@@ -39,8 +39,13 @@ npm test
 
 # What could be improved?
 
+```
 1 - Could be using Angular2
+```
+
+```
 2 - Could be able to change my vote
+```
 
 # How it works
 
