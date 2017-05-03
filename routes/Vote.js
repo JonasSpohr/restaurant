@@ -18,68 +18,69 @@ router.post('/', function(req, res, next) {
 	var dateFiter = new Date(new Date().setHours(0,0,0,0));
 
 	//first check if the user has voted today
-	Vote.find({ "userId" : req.query.userId, "date" : { $gte :  dateFiter } }, 
-		function (errValidUserHasVoted, voteUser) {
+	Vote.find({ "userId" : req.body.userId, "date" : { $gte :  dateFiter } }, 
+	function (errValidUserHasVoted, voteUser) {
 		if (errValidUserHasVoted) {
 			return next(errValidUserHasVoted);
 		}
+		if(voteUser.length > 0){
+			return res.send(JSON.stringify({error : 'You can vote just once per day.'}));
+		}else{
+			newModel.save(function (err) {
+			if (err) return res.send(JSON.stringify({ error : err }));
 
-		if(voteUser != null)
-			return res.send(JSON.stringify({error : 'You can vote just once per day.'})); 
-	});
+				//check if all users have voted
+				//1 - get total users		
+				User.find({}, function (err, users) {
+					if (err) return next(err);
 
-	newModel.save(function (err) {
-		if (err) return res.send(JSON.stringify({ error : err }));
+					var totalUsers = users.length;
 
-		//check if all users have voted
-		//1 - get total users		
-		User.find({}, function (err, users) {
-			if (err) return next(err);
+					//2 - get total votes
+					Vote.find({ "date" : { $gte :  dateFiter } }, 
+						function (err, models) {
+							if (err)
+								return next(err);						
 
-			var totalUsers = users.length;
+							var totalVotes = models.length;
 
-			//2 - get total votes
-			Vote.find({ "date" : { $gte :  dateFiter } }, 
-			function (err, models) {
-				if (err)
-					return next(err);						
+						//if all users have voted, we can define the winner
+						if(totalVotes == totalUsers){
 
-				var totalVotes = models.length;
+							//get the winner and save on his history
+							Vote.aggregate( 
+								{ $match: { "date" : { $gte :  dateFiter } } },
+								{ $group: { _id: '$placeId', total_votes: { $sum: 1 } } },
+								{ $sort: { total_votes: -1} },
+								function (err, resVote) {
+									if (err) return handleError(err);							 	
 
-				//if all users have voted, we can define the winner
-				if(totalVotes == totalUsers){
+									Place.findOne({_id: resVote[0]._id }, function (errPlace, place) {
 
-					//get the winner and save on his history
-					Vote.aggregate( 
-					{ $match: { "date" : { $gte :  dateFiter } } },
-					{ $group: { _id: '$placeId', total_votes: { $sum: 1 } } },
-					{ $sort: { total_votes: -1} },
-					function (err, resVote) {
-						if (err) return handleError(err);							 	
+										if(errPlace)
+											console.error(errPlace);
 
-						Place.findOne({_id: resVote[0]._id }, function (errPlace, place) {
+										place.history.push({
+											date: new Date(),
+											votes: resVote[0].total_votes
+										});
 
-							if(errPlace)
-								console.error(errPlace);
+										place.save(function (errSavePlace) {
+											if(errSavePlace)
+												console.error(errSavePlace);
+										});
+									});
 
-							place.history.push({
-								date: new Date(),
-								votes: resVote[0].total_votes
-							});
-
-							place.save(function (errSavePlace) {
-								if(errSavePlace)
-									console.error(errSavePlace);
-							});
-						});
-
+								});
+						}
 					});
-				}
-			});
-		});
+				});
 
-		res.send(JSON.stringify({ result : newModel }));		
+				res.send(JSON.stringify({ result : newModel }));		
+			});
+		}
 	});
+	
 });
 
 router.get('/findTodayByUserId', function(req, res, next) {
@@ -96,6 +97,27 @@ router.get('/findTodayByUserId', function(req, res, next) {
 
 			res.send(JSON.stringify({ result : models }));
 		});
+});
+
+router.delete('/:id', function(req, res, next) {
+	Vote.findByIdAndRemove(req.params.id, req.body, function (err, model) {
+		if (err) return res.json({error : err});
+
+		res.json({success : true});
+	});
+});
+
+router.post('/deleteAllByUserId', function(req, res, next) {
+
+	Vote.remove({
+		userId : req.body.userId
+	}, 
+	function (err, model) {
+		if (err) return res.json({error : err});
+
+		res.json({success : true});
+	});
+
 });
 
 module.exports = router;
