@@ -49,18 +49,8 @@ npm test
 
 # How it works
 
-```
-One user can vote just once per day, so after his vote he can't vote and the list of available places changed for a message that says to wait.
-```
 
-```
-One place can't be voted more than once per week, so on the list it will not appear for voting this is how i am making this rule.
-```
-
-```
-One user should be able to check who is the winner, there is a page Result for this.
-```
-
-```
-11:45 is the deadline to make vote, after this time the next check will see the winner with the biggest number os votes, if there is no vote I get the first.
-```
+* One user can vote just once per day, so after his vote he can't vote and the list of available places changed for a message that says to wait.
+* One place can't be voted more than once per week, so on the list it will not appear for voting this is how i am making this rule.
+* One user should be able to check who is the winner, there is a page Result for this.
+* 11:45 is the deadline to make vote, after this time the next check will see the winner with the biggest number os votes, if there is no vote I get the first.
